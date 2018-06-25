@@ -7,7 +7,7 @@
             <div class="my-text">
                 <p>{{studentName}}</p>
                 <p>{{schoolName}}</p>
-                <p>高一年级{{studentClass}}</p>
+                <p>{{studentGrade}}{{studentClass}}</p>
                 <p>No：{{studentId}}</p>
             </div>
         </div>
@@ -48,6 +48,7 @@
             return {
                 studentName:'',
                 studentPic: '',
+                studentGrade:'',
                 studentId : '',
                 studentClass:'',
                 schoolName: '',
@@ -77,6 +78,7 @@
                 let userData = JSON.parse(localStorage.getItem('user'));
                 this.studentName = userData.student.name;
                 this.studentPic  = userData.student.head_img;
+                this.studentGrade = userData.student.grade;
                 this.studentClass = userData.student.room_name;
                 this.studentId  = userData.student.system_no;
                 this.schoolName = userData.school.name;
@@ -99,6 +101,7 @@
             height: 2.3rem;
             background: #EE7B0F url('../assets/img/my-bg.png') no-repeat;
             float: left;
+            cursor: pointer;
             .my-pic {
                 width: 1.4rem;
                 height: 1.4rem;

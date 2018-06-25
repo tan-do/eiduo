@@ -6,6 +6,8 @@ Vue.use(vuex);
 export default new vuex.Store({
     state:{
         user: null,   //保存学生信息
+        footComponent:true,
+        // stuReport:[], // 学生报告列表
     },
     getters:{
         getUser(state){
@@ -28,6 +30,17 @@ export default new vuex.Store({
             localStorage.removeItem('user');
             localStorage.removeItem('token')
         }
+
+
+
+        /**
+         * 存储学生报告列表信息
+         * @param {*} state
+         * @param {*} list 保存的数据
+         */
+        // getStuReport(state,list){
+        //     state.stuReport = list;
+        // }
 
     }
 })

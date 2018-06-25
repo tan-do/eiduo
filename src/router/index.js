@@ -9,6 +9,7 @@ const AnswerPage = () => import ('../page/AnswerPage.vue')
 
 const DuoPage = () => import ('../page/DuoPage.vue')
 const VipPage = () => import ('../page/VipPage.vue')
+const AgreePage = () => import ('../page/AgreePage.vue')
 
 const MyPage = () => import ('../page/MyPage.vue')
 const MyOrder = () => import ('../page/MyOrder.vue')
@@ -59,6 +60,11 @@ export default new Router({
         {
             path: '/vip',
             component : VipPage,
+            meta: { requiresAuth: true }
+        },
+        {
+            path: '/agree',
+            component:AgreePage,
             meta: { requiresAuth: true }
         },
 

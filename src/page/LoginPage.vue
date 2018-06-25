@@ -22,17 +22,26 @@
                 //let loginName = $('.login-name').val().trim();
                 //let loginPassword = $('.login-pwd').val().trim();
                 let loginName = 95000250;
-                let loginPassword = 95000250;
+                let loginPassword = 123456;
                 this.axios.post('/auth/api/login_ios?account=' + loginName +'&psw='+loginPassword+'&type=2').then((res)=>{
                     if(res.data.errorCode == 0){
                         alert('登录成功')
-                        let userInfo = JSON.stringify(res.data.result)
-                        //console.log(userInfo);
+
+                        let grade = res.data.result.student.grade;
+
+                        if( grade > 9){
+                            res.data.result.student.grade = "高中" + (grade - 9) + "年级"
+                        }else if(6< grade  && grade <= 9) {
+
+                            res.data.result.student.grade = "初中" + (grade -6) + "年级"
+                        }else {
+                            res.data.result.student.grade = "小学" + (grade) + "年级"
+                        }
+
+                        let userInfo = JSON.stringify(res.data.result);
 
                         this.$store.commit('setUser',userInfo);
-/*                         var getToken = 'yyyyyyyyyyyyyy';
-                        localStorage.setItem('token',getToken);
-                        localStorage.setItem('user',userInfo); */
+
                         this.$router.push({ path: '/' });
                     }else{
                         alert('登录失败')

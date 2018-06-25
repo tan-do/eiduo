@@ -1,11 +1,6 @@
 <template>
     <section class="IndexPage">
         <Report></Report>
-        <section class="last">
-            <div class="last-report">
-                <router-link to="/report">查看报告</router-link>
-            </div>
-        </section>
         <section class="index-history">
             <h1>历次考试</h1>
             <ul>
@@ -18,7 +13,7 @@
                     <p>考试时间：{{ item.examTimeStr}} </p>
                     <p>年级：{{item.grade }}年级 学科：多学科</p>
                     <div class="index-report">
-                        <router-link to="/report">查看报告</router-link>
+                        <router-link :to="{path:'/report',query: {examId:item.examId}}">查看报告</router-link>
                     </div>
                 </li>
             </ul>
@@ -59,7 +54,8 @@
             getPreviousReport() {
                 let systemNo = this.user.student.system_no;
                 this.axios.get('/api/eiduo/report/getPreviousReportStudent?systemNo=' + systemNo + "&page=1" + "&size=3").then((res) => {
-                    //console.log(res.data.data);
+                    // console.log(res.data);
+                    // this.$store.commit('getStuReport',res.data.data);
                     this.PreviousReport = res.data.data;
                 })
             },
@@ -74,34 +70,6 @@
         float: left; //background: #ddd;
         padding-bottom: 1rem;
         min-height: 100vh;
-    }
-    .last {
-        width: 100%;
-        height: auto;
-        background: #f9f9f9;
-        float: left; //padding-bottom: 1rem;
-        .last-report {
-            width: 7rem;
-            height: auto;
-            background: #fff;
-            float: left;
-            margin-left: .25rem;
-            text-align: center;
-            border: 1px solid #ddd;
-            border-top: none;
-            box-sizing: border-box;
-            line-height: 1rem;
-            a {
-                width: 2rem;
-                height: .6rem;
-                background: #F56E03;
-                display: inline-block;
-                border-radius: 1rem;
-                font-size: .32rem;
-                color: #fff;
-                line-height: .6rem;
-            }
-        }
     }
     /* 历次考试 */
     .index-history {
@@ -160,12 +128,12 @@
                     line-height: 2rem;
                     vertical-align: middle;
                     a {
-                        width: 2rem;
+                        width: 2.2rem;
                         height: .6rem;
                         background: #F56E03;
                         display: inline-block;
                         border-radius: 1rem;
-                        font-size: .32rem;
+                        font-size: .22rem;
                         color: #fff;
                         line-height: .6rem;
                     }

@@ -1,14 +1,13 @@
 <template>
     <section class="ReportPage">
-        <Head :back="headData.back" :text="headData.text" :share="headData.share">
-
-        </Head>
-        <Report></Report>
+        <Head :back="headData.back" :text="headData.text" :share="headData.share"></Head>
+        <!-- 查看报告 -->
+        <report-detail></report-detail>
     </section>
 </template>
 
 <script>
-    import Report from '../components/Report.vue';
+    import ReportDetail from '../components/ReportDetail.vue';
     import Head from '../components/Head.vue';
 
     export default {
@@ -23,10 +22,7 @@
             }
         },
 
-        components: {
-            Head,
-            Report,
-        },
+        components: { Head,ReportDetail,},
     }
 </script>
 

@@ -2,7 +2,7 @@
     <section class="DuoPage">
         <section class="duo-bg">
             <h1>多分宝</h1>
-            <div class="duo-card" v-if="true">
+            <div class="duo-card" v-if="alreadyPay">
                 <div class="duo-head">
                     <div class="duo-pic">
                         <img :src="studentPic" alt="">
@@ -14,7 +14,7 @@
                     <div class="duo-logo">
                         <img src="../assets/img/duo-logo.png" alt="">
                         <span>
-                            1
+                            {{alreadyPay}}
                         </span>
                     </div>
                 </div>
@@ -25,11 +25,11 @@
             <div class="duo-card" v-else id="duo-nopay">
                 <div class="duo-head">
                     <div class="duo-pic">
-                        <img src="" alt="">
+                        <img :src="studentPic" alt="">
                     </div>
                     <div class="duo-info">
                         <p>{{studentName}}</p>
-                        <p>111122321</p>
+                        <p>{{studentNo}}</p>
                     </div>
                     <div class="duo-no">
                         尚未点亮
@@ -124,6 +124,7 @@
                     loop: true,
                     direction: 'vertical',
                 },
+                alreadyPay:'', //获取报告数量
                 duoVip: [{
                         "vipTitle": "我的成绩",
                         "vipImg": require("../assets/img/duo-vip-1.png")
@@ -198,9 +199,11 @@
                 return this.$refs.mySwiper.swiper
             }
         },
+
         mounted() {
             this.getUser();
-            this.tabToggle('.duo-tab-ul li', '.duo-tab-content div')
+            this.tabToggle('.duo-tab-ul li', '.duo-tab-content div');
+            this.getOrderCount();
         },
         methods: {
             getUser() {
@@ -216,6 +219,19 @@
                     var thisIndex = $(this).index();
                     $(tabList).eq(thisIndex).show().siblings().hide();
                 });
+            },
+
+            getOrderCount(){
+                let systemNo = this.user.student.system_no;
+                this.axios.get('/api/eiduo/report/getOrderCount?systemNo=' + systemNo).then((res) => {
+                    if(res.data.code = 1){
+                        //alert(res.data.data.alreadyPay);
+                        this.alreadyPay = res.data.data.alreadyPay;
+                        //this.alreadyPay = 0;
+                    } else {
+                        alert ('获取数量失败')
+                    }
+                })
             }
         }
     }

@@ -1,9 +1,8 @@
 <template>
     <section class="vipPage">
-       <h1>{{checkData}}</h1>
         <Head :back="headData.back" :text="headData.text" :share="headData.share">
         </Head>
-        <h1>{{checkArr}}</h1>
+        <!-- <h1>{{checkData}}</h1> -->
         <section class="vip">
             <div class="vip-head">
                 <div class="vip-all">
@@ -79,13 +78,6 @@
             };
         },
         computed: {
-            checkArr(){
-                let checkArr = [];
-                for(var i= 0;i<this.checkData.length;i++){
-                    checkArr.push(this.checkData[i].originalPrice)
-                }
-                return checkArr
-            },
             origin(){
                 return (this.checkData.length * parseFloat(this.originalPrice)).toFixed(2)
             },
@@ -125,7 +117,7 @@
             getOrderList(type) {
                 let userData = JSON.parse(localStorage.getItem('user'));
                 let systemNo = userData.student.system_no;
-                 systemNo = 95000670;
+                 //systemNo = 95000670;
                 this.axios.get('/api/eiduo/wReport/getOrderList?systemNo=' + systemNo + '&type='+ type).then((res) => {
                     if (res.data.code = 1) {
                         //alert(res.data.data);
