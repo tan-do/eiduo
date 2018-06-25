@@ -1,0 +1,96 @@
+@charset "utf-8";
+@import url('./reset.less');
+@import url('./animation.less');
+@import url('//at.alicdn.com/t/font_717924_m407gvf256p.css');
+
+
+@blue:#00A0E9;
+
+
+
+/* 项目公共样式类 */
+body{
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    background: #eee;
+}
+
+
+
+button {
+    border: 1px solid #00A0E9;
+    outline: none;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    box-sizing: border-box;
+
+}
+
+
+input{
+    width: 100%;
+    outline: none;
+    border:1px solid #ddd;
+    //background: #ddd;
+    height: inherit;
+    font-size: .28rem;
+    font-family: inherit ;
+    box-sizing: border-box ;
+    padding: .2rem .4rem;
+    -webkit-appearance: none;
+}
+
+input:focus {
+    border: 1px solid #00A0E9;
+}
+
+/*
+
+input[type="submit"],input[type="button"]{
+    text-indent: 0;
+    cursor: pointer;
+} */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid #FF4136;
+}
+
+table th {
+    height: 40px;
+    background: orangered;
+    color: #fff;
+}
+
+table tr td {
+    height: 40px;
+    text-align: center;
+}
+
+table tr:hover {
+    background: #aaa;
+}
+
+table button {
+    color: #fff;
+    border: none;
+    outline: none;
+    width: 60px;
+    height: 20px;
+    border-radius: 4px;
+}
+
+table b {
+    color: orangered;
+    padding: 0 3px;
+}
+
+
+.ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+

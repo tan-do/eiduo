@@ -1,0 +1,72 @@
+// 公共边框样式
+.report_border {
+    position: relative;
+    min-height: 180px;
+    // border: 1px solid #eaeaea;
+    box-shadow: 1px 1px 5px 2px #eaeaea;
+    border-radius: 5px;
+    #proscons_chart{width: 100%;height: 200px;}
+    #achievement_chart{width: 100%;height: 200px;}
+    #rankingcontrend_chart{width: 100%;height: 200px;}
+}
+// 勋章
+.reportmedal_img{
+    display: inline-block;
+    background: url(../../assets/img/reportmedal.png) no-repeat;
+    width: 22px;
+    height: 29px;
+    vertical-align: middle
+}
+.reoprttitle_span{
+    font-size: .32rem;
+}
+
+// 学科 左右滑动
+nav{
+    padding: 0 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: middle;
+    -ms-flex-align: middle;
+    align-items: middle;
+    overflow: auto;
+    p{
+        text-align: center;
+        font-size: .26rem;
+        -ms-flex-negative: 0;
+        flex-shrink: 0;
+        padding: 5px 15px;
+        margin: 5px;border-radius: 15px;
+        border: 1px solid #ddd;
+    }
+    p.active{
+        color: #fff;
+        background-color: #FE7032;
+    }
+}
+
+.selgrade_class {
+    border: 1px solid #FE7032;
+    border-radius: 3px;
+    display: inline-block;
+    margin-top: 5px;
+    .report_grade,.report_class {
+        width: 1rem;
+        text-align: center;
+        display: inline-block;
+        font-size: .24rem; padding: 4px 9px;
+    }
+    .report_grade.active,.report_class.active{
+        background: #FE7032;
+        color: #ffffff;
+    }
+}
+
+// 字体颜色
+.spancolor_def{
+    color: #999999;
+}
+.spancolor_orange{
+    color: #FE7032;
+}
